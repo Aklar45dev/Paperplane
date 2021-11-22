@@ -1,26 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import {
-  CAlert,
-  CAvatar,
   CButton,
-  CButtonGroup,
   CCard,
   CCardBody,
-  CCardImage,
   CCardTitle,
   CCardText,
-  CCardFooter,
   CCardHeader,
-  CCol,
-  CProgress,
-  CRow,
-  CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
 } from '@coreui/react'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -30,14 +15,28 @@ import {
 } from "@coreui/react-chartjs"
 
 function App() {
+
+  const fetchData = async () => {
+    try {
+    const url = "/Prod/users"
+    const response = fetch(url, {mode: 'cors'})
+    const data = await response.json();
+    console.log(data);
+    }
+    catch (e) {
+      console.log(e)
+    }
+  }
+
+
   return (
     <div className="App">
       <CCard>
-        <CCardHeader component="h5">Paperplane App</CCardHeader>
+        <CCardHeader component="h5">Data Dashboard</CCardHeader>
         <CCardBody>
-          <CCardTitle>Data Dashboard</CCardTitle>
-          <CCardText>Headset float sessions</CCardText>
-          <CButton href="#">Refresh</CButton>
+          <CCardTitle>Paperplane Float</CCardTitle>
+          <CCardText>Headset sessions</CCardText>
+          <CButton onClick={()=>fetchData()} href="#">Refresh</CButton>
         </CCardBody>
       </CCard>
       <CChart

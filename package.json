@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@coreui/coreui": "^4.0.5",
+    "@coreui/icons": "^2.1.0",
     "@coreui/react": "^4.0.2",
     "@coreui/react-chartjs": "^2.0.0",
     "@testing-library/jest-dom": "^5.15.0",
@@ -21,6 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy":"https://xaluarb41m.execute-api.ca-central-1.amazonaws.com",
   "eslintConfig": {
     "extends": [
       "react-app",
