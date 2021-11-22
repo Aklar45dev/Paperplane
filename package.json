@@ -5,6 +5,7 @@
   "dependencies": {
     "@coreui/coreui": "^4.0.5",
     "@coreui/react": "^4.0.2",
+    "@coreui/react-chartjs": "^2.0.0",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
