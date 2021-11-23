@@ -1,8 +1,8 @@
 .App {
   text-align: center;
   align-content: center;
-  padding-left: 25%;
-  padding-right: 25%;
+  padding-left: 10% !important;
+  padding-right: 10% !important;
 }
 
 .App-logo {
@@ -44,7 +44,7 @@
   .App {
     text-align: center;
     align-content: center;
-    padding-left: 0%;
-    padding-right: 0%;
+    padding-left: 0% !important;
+    padding-right: 0% !important;
   }
 }

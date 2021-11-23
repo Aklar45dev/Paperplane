@@ -2,7 +2,6 @@
   "name": "paperplane",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://xaluarb41m.execute-api.ca-central-1.amazonaws.com",
   "dependencies": {
     "@coreui/coreui": "^4.0.5",
     "@coreui/icons": "^2.1.0",
