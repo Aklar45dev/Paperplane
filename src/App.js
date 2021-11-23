@@ -18,7 +18,7 @@ import axios from 'axios';
 function App() {
 
   const fetchData = async () => {
-    axios.get('/Prod/users').then(res => {
+    axios.get('https://xaluarb41m.execute-api.ca-central-1.amazonaws.com/Prod/users').then(res => {
       console.log(res.data)
     })
   }
