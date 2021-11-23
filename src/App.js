@@ -13,19 +13,14 @@ import '@coreui/coreui/dist/css/coreui.min.css'
 import {
   CChart
 } from "@coreui/react-chartjs"
+import axios from 'axios';
 
 function App() {
 
   const fetchData = async () => {
-    try {
-    const url = "/Prod/users"
-    const response = fetch(url, {mode: 'cors'})
-    const data = await response.json();
-    console.log(data);
-    }
-    catch (e) {
-      console.log(e)
-    }
+    axios.get('/Prod/users').then(res => {
+      console.log(res.data)
+    })
   }
 
 
@@ -36,7 +31,7 @@ function App() {
         <CCardBody>
           <CCardTitle>Paperplane Float</CCardTitle>
           <CCardText>Headset sessions</CCardText>
-          <CButton onClick={()=>fetchData()} href="#">Refresh</CButton>
+          <CButton onClick={()=>fetchData()}>Refresh</CButton>
         </CCardBody>
       </CCard>
       <CChart
