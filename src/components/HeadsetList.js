@@ -25,14 +25,14 @@ const HeadsetList = (data) => {
     }, [data.data.sessions]) 
 
     return (
-        <div>
+        <>
             <CAlert color="dark">
                 <strong>Headset Id: </strong>{data.data.id}
             </CAlert>
             <CTable>
             <CTableHead>
                 <CTableRow>
-                <CTableHeaderCell scope="col">Sessions</CTableHeaderCell>
+                <CTableHeaderCell scope="col">Session</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Durée (sec)</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Date</CTableHeaderCell>
                 </CTableRow>
@@ -41,7 +41,7 @@ const HeadsetList = (data) => {
                 {rows && rows.map(row => <ListElement key={row.duration} data={row} />)}
             </CTableBody>
             </CTable> 
-        </div>
+        </>
     )
 }
 
