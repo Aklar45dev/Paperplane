@@ -32,9 +32,11 @@ const HeadsetList = (data) => {
             <CTable>
             <CTableHead>
                 <CTableRow>
-                <CTableHeaderCell scope="col">Session</CTableHeaderCell>
-                <CTableHeaderCell scope="col">Durée (sec)</CTableHeaderCell>
-                <CTableHeaderCell scope="col">Date</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Session #</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Pauses</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Score</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Duration (sec)</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Date</CTableHeaderCell>
                 </CTableRow>
             </CTableHead>
             <CTableBody>
