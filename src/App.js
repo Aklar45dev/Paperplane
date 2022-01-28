@@ -4,16 +4,11 @@ import {
   CCard,
   CCardBody,
   CCardTitle,
-  CCardText,
-  CCardHeader,
   CContainer
 } from '@coreui/react'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@coreui/coreui/dist/css/coreui.min.css'
-import {
-  CChart
-} from "@coreui/react-chartjs"
 import axios from 'axios'
 import HeadsetList from './components/HeadsetList'
 
@@ -40,7 +35,7 @@ function App() {
           <CCardTitle>Paperplane Float</CCardTitle>
         </CCardBody>
       </CCard>
-      {users && users.map(user => <HeadsetList key={user.id} data={user} />)}
+      {users && users.map(user => <HeadsetList key={user.id} data={user} name={user.name} />)}
     </CContainer>
   )
 }

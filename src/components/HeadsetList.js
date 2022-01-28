@@ -15,23 +15,34 @@ import ListElement from './ListElement'
 const HeadsetList = (data) => {
 
     const [rows, setRows] = useState([])
+    const [name, setName] = useState([])
     const [visible, setVisible] = useState(false)
 
     useEffect(() => {
         const array = JSON.parse(data.data.sessions.toString())
+        setName(data.data.name)
         setRows(array)
         let id = 0
         array.forEach(rows => {
             id = id+1
             rows.id = id
         });
-    }, [data.data.sessions]) 
+    }, [data.data])
+    
+    const getName = () => {
+        if (name !== undefined){
+            return name
+        }
+        else {
+            return data.data.id
+        }
+    }
 
     return (
-        <>
+        <div className="headerRow">
             <CAlert color="dark">
                 <CButton className="session-btn" size="sm" color="secondary" onClick={() => setVisible(!visible)}>Sessions</CButton>
-                <strong>Headset Id: </strong>{data.data.id}
+                <strong>Headset: </strong>{getName()}
             </CAlert>
             <CCollapse visible={visible}>
             <CTable>
@@ -45,11 +56,11 @@ const HeadsetList = (data) => {
                 </CTableRow>
             </CTableHead>
             <CTableBody>
-                {rows && rows.map(row => <ListElement key={row.duration} data={row} />)}
+                {rows && rows.map(row => <ListElement key={Math.floor(Math.random() * 1000000)} data={row} />)}
             </CTableBody>
             </CTable>
             </CCollapse> 
-        </>
+        </div>
     )
 }
 
