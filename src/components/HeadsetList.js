@@ -5,7 +5,9 @@ import {
     CTableHead,
     CTableRow,
     CTableHeaderCell,
-    CTableBody
+    CTableBody,
+    CButton,
+    CCollapse
   } from '@coreui/react'
 import ListElement from './ListElement'
 
@@ -13,6 +15,7 @@ import ListElement from './ListElement'
 const HeadsetList = (data) => {
 
     const [rows, setRows] = useState([])
+    const [visible, setVisible] = useState(false)
 
     useEffect(() => {
         const array = JSON.parse(data.data.sessions.toString())
@@ -27,8 +30,10 @@ const HeadsetList = (data) => {
     return (
         <>
             <CAlert color="dark">
+                <CButton className="session-btn" size="sm" color="secondary" onClick={() => setVisible(!visible)}>Sessions</CButton>
                 <strong>Headset Id: </strong>{data.data.id}
             </CAlert>
+            <CCollapse visible={visible}>
             <CTable>
             <CTableHead>
                 <CTableRow>
@@ -42,7 +47,8 @@ const HeadsetList = (data) => {
             <CTableBody>
                 {rows && rows.map(row => <ListElement key={row.duration} data={row} />)}
             </CTableBody>
-            </CTable> 
+            </CTable>
+            </CCollapse> 
         </>
     )
 }

@@ -16,6 +16,21 @@
   }
 }
 
+.card-body{
+  background-color: rgb(0, 182, 233);
+  margin-bottom: 1em;
+}
+
+.card-title{
+  color: white;
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.session-btn{
+  margin-right: 1em;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
