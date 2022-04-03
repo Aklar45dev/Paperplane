@@ -5,12 +5,12 @@ import {
     CTableDataCell
   } from '@coreui/react'
 
-const HeadsetList = (data) => {
+const List = (data) => {
 
     return (
         <>
             <CTableRow>
-            <CTableHeaderCell scope="row">{data.data.id}</CTableHeaderCell>
+            <CTableHeaderCell scope="row">{data.data.app}</CTableHeaderCell>
             <CTableDataCell>{data.data.pause}</CTableDataCell>
             <CTableDataCell>{data.data.score}</CTableDataCell>
             <CTableDataCell>{data.data.duration}</CTableDataCell>
@@ -20,4 +20,4 @@ const HeadsetList = (data) => {
     )
 }
 
-export default HeadsetList
+export default List

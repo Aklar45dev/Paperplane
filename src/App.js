@@ -9,10 +9,7 @@ import {
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@coreui/coreui/dist/css/coreui.min.css'
-import axios from 'axios'
 import HeadsetList from './components/HeadsetList'
-
-
 
 function App() {
 
@@ -20,11 +17,17 @@ function App() {
 
   useEffect(() => {
     fetchData()
-}, [])
+  }, [])
+  
 
   const fetchData = async () => {
-    axios.get('https://xaluarb41m.execute-api.ca-central-1.amazonaws.com/Prod/users').then(res => {
-      setUsers(res.data.Items)
+
+    //get users
+    
+    fetch('https://xaluarb41m.execute-api.ca-central-1.amazonaws.com/Prod/paperplaneusers')
+    .then(response => response.json())
+    .then(data => {
+      setUsers(data.Items)
     })
   }
 

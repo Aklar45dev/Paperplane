@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
     CAlert,
     CTable,
@@ -9,49 +9,46 @@ import {
     CButton,
     CCollapse
   } from '@coreui/react'
+
 import ListElement from './ListElement'
 
 
 const HeadsetList = (data) => {
 
     const [rows, setRows] = useState([])
-    const [name, setName] = useState([])
     const [visible, setVisible] = useState(false)
+    const [loaded, setLoaded] = useState(false)
 
-    useEffect(() => {
-        const array = JSON.parse(data.data.sessions.toString())
-        setName(data.data.name)
-        setRows(array)
-        let id = 0
-        array.forEach(rows => {
-            id = id+1
-            rows.id = id
-        });
-    }, [data.data])
-    
-    const getName = () => {
-        if (name !== undefined){
-            return name
+    const getSessions = async() => {
+        if(!loaded){
+            fetch(`https://xaluarb41m.execute-api.ca-central-1.amazonaws.com/Prod/sessions/${data.data.id}`)
+            .then(response => response.json())
+            .then(data => {
+                setVisible(!visible)
+                setRows(data.session.data)
+                setLoaded(true)
+                return
+            })
         }
-        else {
-            return data.data.id
+        if(loaded){
+            setVisible(!visible)
         }
     }
 
     return (
         <div className="headerRow">
             <CAlert color="dark">
-                <CButton className="session-btn" size="sm" color="secondary" onClick={() => setVisible(!visible)}>Sessions</CButton>
-                <strong>Headset: </strong>{getName()}
+                <CButton className="session-btn" size="sm" color="secondary" onClick={() => getSessions()}>Sessions</CButton>
+                <strong>Headset: </strong>{data.name}
             </CAlert>
             <CCollapse visible={visible}>
             <CTable>
             <CTableHead>
                 <CTableRow>
-                    <CTableHeaderCell scope="col">Session #</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">App</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Pauses</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Score</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Duration (sec)</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Durée (s)</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Date</CTableHeaderCell>
                 </CTableRow>
             </CTableHead>
