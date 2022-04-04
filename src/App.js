@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './App.css';
 import {
   CCard,
@@ -14,19 +14,20 @@ import HeadsetList from './components/HeadsetList'
 function App() {
 
   const [users, setUsers] = useState([])
+  const [loaded, setLoaded] = useState(false)
 
-  useEffect(() => {
+  window.addEventListener("DOMContentLoaded", (event) => {
     fetchData()
-  }, [])
+  })
   
-
   const fetchData = async () => {
 
     //get users
-    
-    fetch('https://xaluarb41m.execute-api.ca-central-1.amazonaws.com/Prod/paperplaneusers')
+    document.getElementById("loader").style.display = "flex"
+    await fetch('https://xaluarb41m.execute-api.ca-central-1.amazonaws.com/Prod/paperplaneusers')
     .then(response => response.json())
     .then(data => {
+      setLoaded(true)
       setUsers(data.Items)
     })
   }
@@ -39,6 +40,7 @@ function App() {
         </CCardBody>
       </CCard>
       {users && users.map(user => <HeadsetList key={user.id} data={user} name={user.name} />)}
+      {loaded === false ? <div className='loader margin' id="loader" /> : <div/>}
     </CContainer>
   )
 }

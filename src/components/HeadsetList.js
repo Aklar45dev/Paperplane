@@ -21,7 +21,8 @@ const HeadsetList = (data) => {
 
     const getSessions = async() => {
         if(!loaded){
-            fetch(`https://xaluarb41m.execute-api.ca-central-1.amazonaws.com/Prod/sessions/${data.data.id}`)
+            document.getElementById(`${data.data.id}`).style.display = "flex"
+            await fetch(`https://xaluarb41m.execute-api.ca-central-1.amazonaws.com/Prod/sessions/${data.data.id}`)
             .then(response => response.json())
             .then(data => {
                 setVisible(!visible)
@@ -38,8 +39,9 @@ const HeadsetList = (data) => {
     return (
         <div className="headerRow">
             <CAlert color="dark">
-                <CButton className="session-btn" size="sm" color="secondary" onClick={() => getSessions()}>Sessions</CButton>
-                <strong>Headset: </strong>{data.name}
+                <CButton className="session-btn" size="sm" color="dark" onClick={() => getSessions()}>Sessions</CButton>
+                <strong>Headset:&nbsp;</strong>{data.name}
+                {loaded === false ? <div className='loader' id={data.data.id}/> : <div/>}
             </CAlert>
             <CCollapse visible={visible}>
             <CTable>
